@@ -1,37 +1,9 @@
-## Welcome to GitHub Pages
+## BYG102 -- Statistikk og landmåling
 
-You can use the [editor on GitHub](https://github.com/akkogve/akkogve.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+På disse sidene vil eg samle stoff som eg skriv medan eg underviser i faget **BYG102**. Med tida vert det kanskje eit komplett *kompendium* som kan fungere som ei lærebok, men inntil vidare er det berre notat til eige bruk.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Fordelen med å bruke GitHub: 
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/akkogve/akkogve.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* Eg kan lett lenke til stoff som ligg på disse sidene,
+* Eg kan skrive i [Markdown](https://daringfireball.net/projects/markdown/syntax) i [RStudio](https://www.rstudio.com/)
+* Eg kan skrive i [LaTeX](https://www.latex-project.org/): $\sin^2(x) + \cos^2(x) = \int_0^1 2 dx$. Ja, ja. Om ikkje det vises her, så vises det i alle fall når eg berre får lenka opp til MathJax ...
