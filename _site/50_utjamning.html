@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Utjamning</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Patua+One|Slabo+27px" rel="stylesheet">
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">BYG102</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Oversikt</a>
+</li>
+<li>
+  <a href="01_definisjonar.html">Definisjonar</a>
+</li>
+<li>
+  <a href="02_nonstop.html">Non stop</a>
+</li>
+<li>
+  <a href="03_datainnsamling.html">Datainnsamling</a>
+</li>
+<li>
+  <a href="04_analyse.html">Analyse</a>
+</li>
+<li>
+  <a href="05_normalfordeling.html">Normalfordelinga</a>
+</li>
+<li>
+  <a href="50_utjamning.html">MKM og utjamning</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Utjamning</h1>
+
+</div>
+
+
+<div id="oversikt-over-kapittelet" class="section level2">
+<h2>Oversikt over kapittelet</h2>
+<div id="bakgrunnskunnskaper-i-matriser" class="section level3">
+<h3>Bakgrunnskunnskaper i matriser</h3>
+<p>Går ut frå at dei veit om</p>
+<ul>
+<li>Oppsett av matrise (dimensjonar)</li>
+<li>Reknereglar (addisjon / multiplikasjon)</li>
+<li>Invers</li>
+<li>Determinant?</li>
+</ul>
+<p>Men eg tar ein rask forkunnskapstest om dette via SMART Response.</p>
+<p><strong>1. Kor mange rekker har denne matrisa?</strong> (Ope svar) <span class="math display">\[A = \begin{bmatrix}1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6\end{bmatrix}\]</span> <strong>2. Kan vi gange saman <span class="math inline">\(M\cdot N\)</span> og/eller <span class="math inline">\(N\cdot M\)</span>?</strong> (Fire alternativ) <span class="math display">\[M=\begin{bmatrix}1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6\end{bmatrix},\quad N = \begin{bmatrix}1 &amp; 2 \\ 3 &amp; 4 4\end{bmatrix}\]</span></p>
+<p><strong>3. Kvadratiske matriser har alltid ein invers</strong> (Ja/Nei)</p>
+<p><strong>4. Kva betyr den <em>transponerte</em> til ei matrise <span class="math inline">\(A\)</span>?</strong> (Fire alternativ)</p>
+<p>Alt etter svara så går eg raskt gjennom kva <em>matriser</em> og <em>vektorar</em> er.</p>
+</div>
+<div id="vekting" class="section level3">
+<h3>Vekting</h3>
+<p>Å vekte ulike observasjonar opp mot kvarandre er ein veldig nyttig teknikk, der vi kan la nokre observasjonar/verdiar få større eller mindre vekt, alt etter som kor “viktige” dei er. Vi har sett dømer på det i veke 4 (forventing).</p>
+<p>Vekting kan vi gjere på ulike måtar. I landmåling er det ulike prinsipp, mellom anna disse to:</p>
+<ul>
+<li>Vi kan rekne ut variansen til kvar enkelt observasjon, og så vekte med den inverse av denne (det sikrer at stor varians gir liten vekt).</li>
+<li>Vi kan vekte med invers avstand til objektet (her også: lang avstand gir lita vekt).</li>
+</ul>
+</div>
+<div id="linearisering" class="section level3">
+<h3>Linearisering</h3>
+<p>Ofte har vi bruk for å tilnærme ein komplisert funksjon med ein enkel (lineær) funksjon. Teikn ein graf som døme. Utled raskt at vi kan skrive <span class="math display">\[f(x) \approx f(x_0) + (x−x_0)f&#39;(x_0) = f&#39;(x_0)\cdot x+(f(x_0 )−f&#39;(x_0)\cdot x_0)=ax+b\]</span></p>
+<p>Altså ei rett linje, der <span class="math inline">\(a=f&#39;(x_0)\)</span> og <span class="math inline">\(b=(f(x_0 )−f&#39;(x_0))\cdot x_0\)</span>. Denne er ofte mykje enklare å rekne med, og (ikkje minst) enklare å putte inn i formlar. Spesielt viktig er det at vi må ha lineære likningar for å bruke minste kvadraters metode.</p>
+</div>
+<div id="feilforplantingsformel" class="section level3">
+<h3>Feilforplantingsformel</h3>
+<p>Å utvide denne til den generelle feilforplantinga krev ein god del arbeid (kapittel 9 i kompendiet), men sluttresultatet vert at ei god (lineær) tilnærming av samla usikkerhet i ein variabel <span class="math inline">\(Z\)</span> som er ein kombinasjon av mange ulike målingar <span class="math inline">\(x_1, \ldots, x_n\)</span> er gitt ved <span class="math display">\[Var(Z)=\left(\frac{\delta Z}{\delta x_1} \sigma_{x_1}\right)^2 + \ldots + \left(\frac{\delta Z}{\delta x_n} \sigma_{x_n}\right)^2\]</span> som er (9.18) i kompendiet. Poenget er at den samla usikkerheten er ein <em>vekta</em> sum av dei enkelte usikkerhetane, og vekta vi bruker er den deriverte av målfunksjonen med omsyn til kvar enkelt variabel (kapittel 10).</p>
+</div>
+<div id="dmer-pa-feilforplanting" class="section level3">
+<h3>Dømer på feilforplanting</h3>
+<div id="dme-1-fjellhall" class="section level4">
+<h4>Døme 1: Fjellhall</h4>
+<p>La oss sei du skal måle volumet av ein fjellhall. Hallen er forma som eit rett prisme, som er <span class="math inline">\(x\)</span> meter breitt, <span class="math inline">\(y\)</span> meter høgt og <span class="math inline">\(z\)</span> meter langt. Bredde <span class="math inline">\(x\)</span> og høgde <span class="math inline">\(y\)</span> er målt med eit apparat som har usikkerhet (oppgitt i apparatet) <span class="math inline">\(\sigma_1=0,02\)</span> m, og lengda <span class="math inline">\(z\)</span> er målt med eit anna apparat som har usikkerhet <span class="math inline">\(\sigma_2=0,05\)</span> m. Dei aktuelle målingane (tre enkeltmålingar) er <span class="math inline">\(x=34,56\)</span>, <span class="math inline">\(y=5,64\)</span> og <span class="math inline">\(z=125,20\)</span> m</p>
+<p>Samla usikkerhet er då gitt ved <span class="math display">\[S_V = \sqrt{\left(\frac{\partial V}{\partial x}\cdot \sigma_1\right)^2 + \left(\frac{\partial V}{\partial y}\cdot \sigma_1\right)^2 + \left(\frac{\partial V}{\partial z}\cdot \sigma_2\right)^2}\]</span> der dei tre partiellderiverte er gitt ved <span class="math display">\[\frac{\partial V}{\partial x} = y\cdot z = 5.64\cdot 125.20 = 706.128\]</span> <span class="math display">\[\frac{\partial V}{\partial y} = x\cdot z = 34.56\cdot 125.20 = 4326.912\]</span> og <span class="math display">\[\frac{\partial V}{\partial z} = x\cdot y = 34.56\cdot 5.64 = 194.9184\]</span> slik at usikkerheten vert <span class="math display">\[S_V = \sqrt{(706.128\cdot 0.02)^2 + (4326.912\cdot 0.02)^2 + (194.9184\cdot 0.05)^2} = 88.22 \text{ m}^3\]</span> Volumet er <span class="math inline">\(34.56\cdot 5.64\cdot 125.20 = 24\;403.78\)</span> m<span class="math inline">\(^3\)</span>, så den relative feilen er <span class="math display">\[S_V^r = \frac{S_V}{V} = \frac{88.22}{24\;403.78}\approx 0.0036\]</span></p>
+</div>
+<div id="dme-2-sylinder" class="section level4">
+<h4>Døme 2: Sylinder</h4>
+<p>Du skal rekne ut volumet av ein sylinder. Vi måler diameteren med mikrometerskrue (usikkerhet <span class="math inline">\(\sigma_1=0.05\)</span> mm) og lengde med <em>skyvelære</em> (usikkerhet <span class="math inline">\(\sigma_2=0.1\)</span> mm), og dei målte verdiane er <span class="math inline">\(d = 35.10\)</span> mm og <span class="math inline">\(h = 94.20\)</span> mm. Formelen for volum er <span class="math display">\[V(d, h)=\pi\cdot \left(\frac{d}{2}\right)^2\cdot h\]</span> og dei to partiellderiverte er dermed <span class="math display">\[\frac{\partial V}{\partial d} = \frac{\pi}{2}\cdot d\cdot h = \frac{\pi}{2}\cdot 35.10\cdot 94.20 = 5193.71\]</span> og <span class="math display">\[\frac{\partial V}{\partial h} = \frac{\pi}{4}\cdot d^2 = \frac{\pi}{2}\cdot 35.10^2 \approx 967.62\]</span> Samla usikkerhet vert då <span class="math display">\[S_V = \sqrt{(5193.71\cdot 0.05)^2 + (967.62\cdot 0.1)^2} \approx 277.13 \text{ mm}^3\]</span> og når volumet er <span class="math inline">\(91\;149.65\)</span> mm<span class="math inline">\(^3\)</span> vert den <em>relative usikkerheten</em> <span class="math display">\[S_V^r= \frac{S_V}{V} = \frac{323.86}{91\;149.65}\approx 0.0030\]</span></p>
+<p>Ta eitt av disse døma, det andre på WeBWorK.</p>
+</div>
+</div>
+</div>
+<div id="minste-kvadraters-metode" class="section level2">
+<h2>Minste kvadraters metode</h2>
+<p>Eitt problem vi støter på er <em>overbestemte likningsystem</em>, der vi har fleire likningar enn vi har ukjente. Det motsatte vil aldri vere tilfellet. Kvar likning representerer (i vårt tilfelle) ei utrekning av eit punkt. Dersom utrekninga er basert på to målingar, vil vi teoretisk berre trenge to likningar. Men av di det er usikkerhet involvert gjer vi fleire målingar. Eitt spørsmål vil då vere “Kva verdi er den mest sannsynlege?” Det viser seg (kapittel 11.2 i kompendiet) at det er den verdien som gjer kvadratsummen av residualane <span class="math inline">\(v_1, \ldots, v_n\)</span> minst mogleg.</p>
+<div id="dme-nivellement" class="section level3">
+<h3>Døme (Nivellement)</h3>
+<p>Vi har eit fast punkt <span class="math inline">\(A\)</span> som er målt inn til 300 moh. Så har vi to målingar frå ukjende punkt <span class="math inline">\(H_{P1}\)</span> og <span class="math inline">\(H_{P2}\)</span> inn til <span class="math inline">\(A\)</span>: <span class="math display">\[ H_{P1A} = 10\qquad \text{og} \qquad H_{P2A} = 8\]</span> Dette burde gi oss at <span class="math display">\[H_{P1} = H_A-H_{P1A} = 300-10=290\quad\text{og}\quad H_{P2}=H_A-H_{P2A}=300-8=292\]</span> Men i tillegg har vi ei tredje måling frå <span class="math inline">\(H_{P1}\)</span> til <span class="math inline">\(H_{P2}\)</span> som forkludrer det heile litt: <span class="math display">\[H_{P1P2}=3\]</span> Det er tydeleg eitt eller anna som er feil. Vi kan lage disse tre likningane basert på målingane: <span class="math display">\[H_{P1} + H_{P1A} = H_A + v_1 \\ H_{P2} + H_{P2A} = H_A + v_2 \\ H_{P1} + H_{12} = H_{P2} + v_2\]</span> Dei tre storleikane <span class="math inline">\(v_i\)</span> kaller vi <em>residualar</em>; dei står for “feilen i målinga”, altså “resten” eller “det som vert til overs”. Vi ønsker å finne verdiar av <span class="math inline">\(H_{P1}\)</span> og <span class="math inline">\(H_{P2}\)</span> slik at kvadratsummen av disse vert minst mogleg.</p>
+<div id="ved-derivasjon" class="section level4">
+<h4>Ved derivasjon</h4>
+<p>Å finne den verdien som gir minst verdi betyr å derivere ein funksjon. Vi lager kvadratsummen som <span class="math display">\[\begin{align*}S(H_{P1}, H_{P2}) &amp; =v_1^2 + v_2^2+v_3^2 \\ &amp; = (H_{P1}+H_{P1A}-H_A)^2 + (H_{P2}+H_{P2A}-H_A)^2+ (H_{P1}+H_{12}-H_{P2})^2 \\ &amp; = (H_{P1}-290)^2 + (H_{P1}-H_{P2}+3)^2 + (H_{P2}-292)^2\end{align*}\]</span> Så deriverer vi <span class="math inline">\(S\)</span> med omsyn til <span class="math inline">\(H_{P1}\)</span>: <span class="math display">\[\frac{\partial S}{\partial H_{P1}} = 2\cdot (H_{P1}-290) + 2\cdot (H_{P1}-H_{P2}+3) = 4\cdot H_{P1}-2\cdot H_{P2}-574\]</span> og med omsyn til <span class="math inline">\(H_{P2}\)</span>: <span class="math display">\[\frac{\partial S}{\partial H_{P2}} = 2\cdot (H_{P1}-H_{P2}+3)\cdot (-2) + 2\cdot (H_{P2}-292) = -2\cdot H_{P1}+4\cdot H_{P2}-590\]</span> Vi har altså likningsystemet (etter at vi har korta med 2 og skrevet på matriseform) <span class="math display">\[\begin{matrix}2\cdot H_{P1} - H_{P2} = 287 \\ -H_{P1}+2\cdot H_{P2}=295\end{matrix}\quad\rightarrow\quad\begin{bmatrix}2 &amp; -1 \\ -1 &amp; 2\end{bmatrix}\cdot\begin{bmatrix}H_{P1} \\ H_{P2}\end{bmatrix} = \begin{bmatrix}287 \\ 295\end{bmatrix}\quad\rightarrow\quad B\cdot X = C\]</span> Ved kontroll er determinanten til <span class="math inline">\(B\)</span> lik <span class="math inline">\(\det(B)=3\neq0\)</span>, så vi kan finne den inverse. Vi løyser systemet ved (i Scilab) å rekne ut <span class="math display">\[X = B^{-1}\cdot C = \begin{bmatrix}289.67 \\ 292.33\end{bmatrix}=\begin{bmatrix}H_{P1} \\H_{P2}\end{bmatrix}\]</span> Så dei to høgdene er altså litt ulike det dei “burde vore” om ikkje målinga <span class="math inline">\(H_{12}\)</span> kom i vegen.</p>
+</div>
+<div id="ved-matriser" class="section level4">
+<h4>Ved matriser</h4>
+<p>Det går an (i kompendiet) å utleie ein annan måte som gir oss eksakt same svar, men med mykje mindre arbeid.</p>
+<p>Først ordner vi likningane, slik at dei ukjende kjem på ei side (og vi tar vekk residualane): <span class="math display">\[H_{P1} =  H_A - H_{P1A} \\ H_{P2} = H_A - H_{P2A}\\ H_{P1} -H_{P2} = -H_{12}\]</span> og skriv dei på matriseforma <span class="math display">\[\begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; -1\end{bmatrix}\cdot \begin{bmatrix}H_{P1} \\ H_{P2}\end{bmatrix} = \begin{bmatrix}H_A-H_{P1A} \\ H_A-H_{P2A} \\ -H_{12}\end{bmatrix} = \begin{bmatrix}290 \\ 292 \\ -3\end{bmatrix}\]</span> Vi kaller disse for <span class="math inline">\(A\)</span>, <span class="math inline">\(X\)</span> og <span class="math inline">\(L\)</span>, slik at vi kan skrive <span class="math inline">\(A\cdot X = L\)</span>. Vi finn <span class="math inline">\(X\)</span> ved (i Scilab) å rekne ut <span class="math display">\[X = (A^T\cdot A)^{-1}\cdot A^T\cdot L\]</span> Vi viser ikkje at dette er rett, men merker oss at <span class="math display">\[A^T\cdot A = \begin{bmatrix}2 &amp; -1 \\ -1 &amp; 2\end{bmatrix}\]</span> og <span class="math display">\[A^T\cdot L = \begin{bmatrix}287 \\ 295\end{bmatrix},\]</span> altså dei same matrisene som vi hadde i stad.</p>
+<p>Vi har dermed ein standard metode for å finne den verdien av x og y som gir den mest sannsynlege verdien, basert på mange likningar (som kvar for seg er tilnærma rett).</p>
+<p>I Scilab skriv vi <code>X=(A'*A)^(-1)*A'*L</code>.</p>
+</div>
+</div>
+<div id="residualar" class="section level3">
+<h3>Residualar</h3>
+<p>“Residual” kan vi bruke om “rest” eller “det som er att”, eller som her: <em>forskjellen</em> mellom ein observert verdi og den verdien vi finn ved minste kvadraters metode.</p>
+<p>Det vil vere ein residual for kvar observert verdi, og vi kan dermed setje opp ei matrise <span class="math inline">\(V\)</span> som ha same dimensjon som <span class="math inline">\(X\)</span>, og vi kan finne alle residualane ved å rekne ut <span class="math display">\[V = \begin{bmatrix}V_1 \\ V_2\end{bmatrix} = A\cdot X - L  = \begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; -1\end{bmatrix}\cdot\begin{bmatrix}289.67 \\ 292.33\end{bmatrix} - \begin{bmatrix}290\\292\\-3\end{bmatrix} = \begin{bmatrix}-0.33\\0.33\\0.33\end{bmatrix}\]</span> (i Scilab <code>V=A*X-L</code>). Poenget med minste kvadraters metode er å minimere kvadratsummen av residualane, og det viser det seg at produktet <code>V^T*V</code> er akkurat denne kvadratsummen: <span class="math display">\[\sum V_i^2 = V^T\cdot V = \begin{bmatrix}-0.33 &amp; 0.33 &amp; 0.33\end{bmatrix}\cdot\begin{bmatrix}-0.33\\0.33\\0.33\end{bmatrix} = 0.33\]</span></p>
+</div>
+<div id="vektsmatriser" class="section level3">
+<h3>Vektsmatriser</h3>
+<p>No kombinerer vi to ting: <em>vekting</em> (basert på usikkerhet) og <em>minste kvadraters metode</em>. Vi treng då å samle informasjonen om vekting på ein hensiktsmessig måte, slik at vi kan bruke den saman med matrisene i forrige avsnitt. Den mest hensiktsmessige er å lage ei diagonalmatrise med vektene på diagonalen. I Scilab lager vi diagonalmatriser ved kommandoen <code>diag([vektor])</code>. La oss vekte dei tre ulike målingane i dømet med <em>usikkerheten</em> i kvar måling (den er gjot med to ulike måleapparat): <span class="math display">\[\sigma_1 = 0.1\;\text{m}\qquad\text{og}\qquad\sigma_2 = 0.2\;\text{m}\]</span> og <span class="math inline">\(\sigma_1\)</span> er brukt i dei to målingane i punkt <span class="math inline">\(P1\)</span> og <span class="math inline">\(\sigma_2\)</span> i den eine målinga i punkt <span class="math inline">\(P2\)</span>.</p>
+<p>Så vekter vi systemet ved å gi kvar likning si vekt: <span class="math display">\[\text{Likning 1: } H_{P1} = H_A - H_{P1A} \\ \text{Likning 2: } H_{P2} = H_A - H_{P2A}\\ \text{Likning 3: }H_{P1} -H_{P2} = -H_{12}\]</span> No inneheld den første og tredje likninga tal målt med usikkerhet <span class="math inline">\(\sigma_1\)</span>, og den andre tal som er målt med usikkerhet <span class="math inline">\(\sigma_2\)</span>. Då vil <em>vektsmatrisa</em> (som vi kaller <span class="math inline">\(P\)</span>) vere <span class="math display">\[P=\begin{bmatrix}0.1 &amp; 0 &amp; 0\\ 0 &amp; 0.2 &amp; 0 \\ 0 &amp; 0 &amp; 0.1\end{bmatrix}\]</span> og vi får den i Scilab ved kommandoen <code>P = diag([0.1, 0.2, 0.1])</code>. Vidare kan vi skrive dei tre likningane ved matriseuttrykket <span class="math display">\[A\cdot X = L\]</span> og når vi vekter dei tre likiningane kan vi gjere det ved å multiplisere kvar side av uttrykket med <span class="math inline">\(P\)</span>: <span class="math display">\[P\cdot A\cdot X=P\cdot L \quad\rightarrow\quad X=(A^T\cdot P\cdot A)^{−1}\cdot A^T \cdot P\cdot L = \begin{bmatrix}289.60 \\ 292.20\end{bmatrix}\]</span> som i Scilab vert <code>X=(A'*P*A)^(-1)*A'*P*L</code>. Vi får også nye residualar: <span class="math display">\[V = A\cdot X-L = \begin{bmatrix}-0.4\\0.2\\0.4\end{bmatrix}\]</span> Kan nokon forklare kvifor dei to høgdene som er målt med minst usikkerhet får størst residualar?</p>
+<p>Vi kan då også finne den vekta kvadratsummen av residualane som <span class="math inline">\(V^T\cdot P\cdot V\)</span>: <span class="math display">\[\begin{bmatrix}-0.4 &amp; 0.2 &amp; 0.4\end{bmatrix}\cdot\begin{bmatrix}0.1 &amp; 0 &amp; 0 \\ 0 &amp; 0.2 &amp; 0 \\ 0 &amp; 0 &amp; 0.1\end{bmatrix}\cdot \begin{bmatrix}-0.4\\0.2\\0.4\end{bmatrix} = (-0.4)^2\cdot 0.1 + 0.2^2\cdot 0.2 + 0.4^2\cdot0.1 = 0.04\]</span> Kvadratsummen av residualane er <em>mindre</em> enn i det uvekta dømet; det er eit godt teikn.</p>
+</div>
+<div id="usikkerhet-i-resultatet" class="section level3">
+<h3>Usikkerhet i resultatet</h3>
+<p>Kor stor er usikkerheten i <span class="math inline">\(H_{P1}\)</span> og <span class="math inline">\(H_{P2}\)</span> (høgdene vi fant i forrige døme)? Vi vil gjerne finne standardavviket for både <span class="math inline">\(H_{P1}\)</span> og <span class="math inline">\(H_{P2}\)</span>. Vi gjer dette ved å finne to “hjelpestorleikar” (eit matematisk omgrep som betyr “tal vi skal bruke, men ikkje tar oss bryet med å forklare”). Den første er “root mean square error”, <em>RMSE</em>, definert ved <span class="math display">\[\sigma_0=\sqrt{\frac{V^T\cdot P\cdot V}{df}}\]</span> der “<span class="math inline">\(df\)</span>” er talet på “overbestemmelser” (eller “frihetsgrader”). Det betyr kor mange likningar vi har “for mange”, og er også ein konstant som er innført av ulike matematiske grunnar. Vi rekner den i dette tilfellet ut som <span class="math display">\[df = \text{talet på likningar} - \text{talet på ukjende} = 3-2=1\]</span> slik at <span class="math display">\[\sigma_0=\sqrt{\frac{0.04}{1}} = 0.2\]</span></p>
+<p>Vi treng også <em>kofaktormatrisa</em> <span class="math display">\[Q=(A^T \cdot P\cdot A)^{−1} = \begin{bmatrix}6 &amp; 2 \\ 2 &amp; 4\end{bmatrix}\]</span> Så viser det seg at vi kan lage ei matrise som inneheld både varians til kvar variabel, og kovarians mellom variablane: <span class="math display">\[S=\sigma_0^2\cdot Q = 0.2^2\cdot\begin{bmatrix}6 &amp; 2 \\ 2 &amp; 4\end{bmatrix} = \begin{bmatrix}0.24 &amp; 0.08 \\ 0.08 &amp; 0.16\end{bmatrix}.\]</span> Denne matrisa (som her har dimensjonar: <span class="math inline">\(2\times 2\)</span>) har varians til ein variabel på hoveddiagonalen, og kovarians mellom to variable på dei andre elementa. Den kalles (fornuftig nok) <em>varians-kovariansmatrisa</em>. For å vere presise kan vi frå matrisa lese ut at: <span class="math display">\[Var(H_{P1}) = 0.24, \quad Var(H_{P2}) = 0.16\quad\text{og}\quad Cov(H_{P1}, H_{P2}) = 0.08\]</span> Tar vi kvadratrota av matrisa får vi på hoveddiagonalen standardavvika til dei to høgdene: <span class="math display">\[\sigma_{P1} = 0.49\qquad \sigma_{P2}= 0.4\]</span> (Rota av kovariansen mellom dei to høgdene er ikkje interessant.)</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+---
+title: "Utjamning"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Oversikt over kapittelet
+
+### Bakgrunnskunnskaper i matriser
+
+Går ut frå at dei veit om
+
+* Oppsett av matrise (dimensjonar)
+* Reknereglar (addisjon / multiplikasjon)
+* Invers
+* Determinant?
+
+Men eg tar ein rask forkunnskapstest om dette via SMART Response. 
+
+**1. Kor mange rekker har denne matrisa?** (Ope svar)
+$$A = \begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix}$$
+**2. Kan vi gange saman $M\cdot N$ og/eller $N\cdot M$?** (Fire alternativ)
+$$M=\begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix},\quad N = \begin{bmatrix}1 & 2 \\ 3 & 4 4\end{bmatrix}$$
+
+**3. Kvadratiske matriser har alltid ein invers** (Ja/Nei)
+
+**4. Kva betyr den *transponerte* til ei matrise $A$?** (Fire alternativ)
+
+
+Alt etter svara så går eg raskt gjennom kva *matriser* og *vektorar* er.
+
+### Vekting
+
+Å vekte ulike observasjonar opp mot kvarandre er ein veldig nyttig teknikk, der vi kan la nokre observasjonar/verdiar få større eller mindre vekt, alt etter som kor "viktige" dei er. Vi har sett dømer på det i veke 4 (forventing).
+
+Vekting kan vi gjere på ulike måtar. I landmåling er det ulike prinsipp, mellom anna disse to:
+
+* Vi kan rekne ut variansen til kvar enkelt observasjon, og så vekte med den inverse av denne (det sikrer at stor varians gir liten vekt).
+* Vi kan vekte med invers avstand til objektet (her også: lang avstand gir lita vekt).
+
+### Linearisering
+
+Ofte har vi bruk for å tilnærme ein komplisert funksjon med ein enkel (lineær) funksjon. Teikn ein graf som døme. Utled raskt at vi kan skrive 
+$$f(x) \approx f(x_0) + (x−x_0)f'(x_0) = f'(x_0)\cdot x+(f(x_0 )−f'(x_0)\cdot x_0)=ax+b$$
+
+Altså ei rett linje, der $a=f'(x_0)$ og $b=(f(x_0 )−f'(x_0))\cdot x_0$. Denne er ofte mykje enklare å rekne med, og (ikkje minst) enklare å putte inn i formlar. Spesielt viktig er det at vi må ha lineære likningar for å bruke minste kvadraters metode.
+
+### Feilforplantingsformel
+Å utvide denne til den generelle feilforplantinga krev ein god del arbeid (kapittel 9 i kompendiet), men sluttresultatet vert at ei god (lineær) tilnærming av samla usikkerhet i ein variabel $Z$ som er ein kombinasjon av mange ulike målingar $x_1, \ldots, x_n$  er gitt ved
+$$Var(Z)=\left(\frac{\delta Z}{\delta x_1} \sigma_{x_1}\right)^2 + \ldots + \left(\frac{\delta Z}{\delta x_n} \sigma_{x_n}\right)^2$$
+som er (9.18) i kompendiet. Poenget er at den samla usikkerheten er ein *vekta* sum av dei enkelte usikkerhetane, og vekta vi bruker er den deriverte av målfunksjonen med omsyn til kvar enkelt variabel (kapittel 10).
+
+### Dømer på feilforplanting
+
+#### Døme 1: Fjellhall
+
+La oss sei du skal måle volumet av ein fjellhall. Hallen er forma som eit rett prisme, som er $x$ meter breitt, $y$ meter høgt og $z$ meter langt. Bredde $x$ og høgde $y$ er målt med eit apparat som har usikkerhet (oppgitt i apparatet) $\sigma_1=0,02$ m, og lengda $z$ er målt med eit anna apparat som har usikkerhet $\sigma_2=0,05$ m. Dei aktuelle målingane (tre enkeltmålingar) er $x=34,56$, $y=5,64$ og $z=125,20$ m
+
+Samla usikkerhet er då gitt ved
+$$S_V = \sqrt{\left(\frac{\partial V}{\partial x}\cdot \sigma_1\right)^2 + \left(\frac{\partial V}{\partial y}\cdot \sigma_1\right)^2 + \left(\frac{\partial V}{\partial z}\cdot \sigma_2\right)^2}$$
+der dei tre partiellderiverte er gitt ved
+$$\frac{\partial V}{\partial x} = y\cdot z = 5.64\cdot 125.20 = 706.128$$
+$$\frac{\partial V}{\partial y} = x\cdot z = 34.56\cdot 125.20 = 4326.912$$
+og
+$$\frac{\partial V}{\partial z} = x\cdot y = 34.56\cdot 5.64 = 194.9184$$
+slik at usikkerheten vert
+$$S_V = \sqrt{(706.128\cdot 0.02)^2 + (4326.912\cdot 0.02)^2 + (194.9184\cdot 0.05)^2} = 88.22 \text{ m}^3$$
+Volumet er $34.56\cdot 5.64\cdot 125.20 = 24\;403.78$ m$^3$, så den relative feilen er 
+$$S_V^r = \frac{S_V}{V} = \frac{88.22}{24\;403.78}\approx 0.0036$$
+
+#### Døme 2: Sylinder
+Du skal rekne ut volumet av ein sylinder. Vi måler diameteren med mikrometerskrue (usikkerhet $\sigma_1=0.05$ mm) og lengde med *skyvelære* (usikkerhet $\sigma_2=0.1$ mm), og dei målte verdiane er $d = 35.10$ mm og $h = 94.20$ mm.
+Formelen for volum er $$V(d, h)=\pi\cdot \left(\frac{d}{2}\right)^2\cdot h$$
+og dei to partiellderiverte er dermed
+$$\frac{\partial V}{\partial d} = \frac{\pi}{2}\cdot d\cdot h = \frac{\pi}{2}\cdot 35.10\cdot 94.20 = 5193.71$$
+og 
+$$\frac{\partial V}{\partial h} = \frac{\pi}{4}\cdot d^2 = \frac{\pi}{2}\cdot 35.10^2 \approx 967.62$$
+Samla usikkerhet vert då
+$$S_V = \sqrt{(5193.71\cdot 0.05)^2 + (967.62\cdot 0.1)^2} \approx 277.13 \text{ mm}^3$$
+og når volumet er $91\;149.65$ mm$^3$ vert den *relative usikkerheten*
+$$S_V^r= \frac{S_V}{V} = \frac{323.86}{91\;149.65}\approx 0.0030$$
+
+Ta eitt av disse døma, det andre på WeBWorK.
+
+## Minste kvadraters metode
+
+Eitt problem vi støter på er *overbestemte likningsystem*, der vi har fleire likningar enn vi har ukjente. Det motsatte vil aldri vere tilfellet. Kvar likning representerer (i vårt tilfelle) ei utrekning av eit punkt. Dersom utrekninga er basert på to målingar, vil vi teoretisk berre trenge to likningar. Men av di det er usikkerhet involvert gjer vi fleire målingar. Eitt spørsmål vil då vere "Kva verdi er den mest sannsynlege?" Det viser seg (kapittel 11.2 i kompendiet) at det er den verdien som gjer kvadratsummen av residualane $v_1, \ldots, v_n$  minst mogleg.
+
+### Døme (Nivellement)
+
+Vi har eit fast punkt $A$ som er målt inn til 300 moh. Så har vi to målingar frå ukjende punkt $H_{P1}$ og $H_{P2}$ inn til $A$:
+$$ H_{P1A} = 10\qquad \text{og} \qquad H_{P2A} = 8$$
+Dette burde gi oss at 
+$$H_{P1} = H_A-H_{P1A} = 300-10=290\quad\text{og}\quad H_{P2}=H_A-H_{P2A}=300-8=292$$
+Men i tillegg har vi ei tredje måling frå $H_{P1}$ til $H_{P2}$ som forkludrer det heile litt:
+$$H_{P1P2}=3$$
+Det er tydeleg eitt eller anna som er feil. Vi kan lage disse tre likningane basert på målingane:
+$$H_{P1} + H_{P1A} = H_A + v_1 \\ H_{P2} + H_{P2A} = H_A + v_2 \\ H_{P1} + H_{12} = H_{P2} + v_2$$
+Dei tre storleikane $v_i$ kaller vi *residualar*; dei står for "feilen i målinga", altså "resten" eller "det som vert til overs". Vi ønsker å finne verdiar av $H_{P1}$ og $H_{P2}$ slik at kvadratsummen av disse vert minst mogleg. 
+
+
+#### Ved derivasjon
+
+Å finne den verdien som gir minst verdi betyr å derivere ein funksjon. Vi lager kvadratsummen som 
+$$\begin{align*}S(H_{P1}, H_{P2}) & =v_1^2 + v_2^2+v_3^2 \\ & = (H_{P1}+H_{P1A}-H_A)^2 + (H_{P2}+H_{P2A}-H_A)^2+ (H_{P1}+H_{12}-H_{P2})^2 \\ & = (H_{P1}-290)^2 + (H_{P1}-H_{P2}+3)^2 + (H_{P2}-292)^2\end{align*}$$
+Så deriverer vi $S$ med omsyn til $H_{P1}$:
+$$\frac{\partial S}{\partial H_{P1}} = 2\cdot (H_{P1}-290) + 2\cdot (H_{P1}-H_{P2}+3) = 4\cdot H_{P1}-2\cdot H_{P2}-574$$
+og med omsyn til $H_{P2}$:
+$$\frac{\partial S}{\partial H_{P2}} = 2\cdot (H_{P1}-H_{P2}+3)\cdot (-2) + 2\cdot (H_{P2}-292) = -2\cdot H_{P1}+4\cdot H_{P2}-590$$
+Vi har altså likningsystemet (etter at vi har korta med 2 og skrevet på matriseform) 
+$$\begin{matrix}2\cdot H_{P1} - H_{P2} = 287 \\ -H_{P1}+2\cdot H_{P2}=295\end{matrix}\quad\rightarrow\quad\begin{bmatrix}2 & -1 \\ -1 & 2\end{bmatrix}\cdot\begin{bmatrix}H_{P1} \\ H_{P2}\end{bmatrix} = \begin{bmatrix}287 \\ 295\end{bmatrix}\quad\rightarrow\quad B\cdot X = C$$
+Ved kontroll er determinanten til $B$ lik $\det(B)=3\neq0$, så vi kan finne den inverse. Vi løyser systemet ved (i Scilab) å rekne ut
+$$X = B^{-1}\cdot C = \begin{bmatrix}289.67 \\ 292.33\end{bmatrix}=\begin{bmatrix}H_{P1} \\H_{P2}\end{bmatrix}$$
+Så dei to høgdene er altså litt ulike det dei "burde vore" om ikkje målinga $H_{12}$ kom i vegen.
+
+#### Ved matriser
+Det går an (i kompendiet) å utleie ein annan måte som gir oss eksakt same svar, men med mykje mindre arbeid.
+
+Først ordner vi likningane, slik at dei ukjende kjem på ei side (og vi tar vekk residualane):
+$$H_{P1} =  H_A - H_{P1A} \\ H_{P2} = H_A - H_{P2A}\\ H_{P1} -H_{P2} = -H_{12}$$
+og skriv dei på matriseforma
+$$\begin{bmatrix}1 & 0 \\ 0 & 1 \\ 1 & -1\end{bmatrix}\cdot \begin{bmatrix}H_{P1} \\ H_{P2}\end{bmatrix} = \begin{bmatrix}H_A-H_{P1A} \\ H_A-H_{P2A} \\ -H_{12}\end{bmatrix} = \begin{bmatrix}290 \\ 292 \\ -3\end{bmatrix}$$
+Vi kaller disse for $A$, $X$ og $L$, slik at vi kan skrive $A\cdot X = L$. 
+Vi finn $X$ ved (i Scilab) å rekne ut 
+$$X = (A^T\cdot A)^{-1}\cdot A^T\cdot L$$
+Vi viser ikkje at dette er rett, men merker oss at 
+$$A^T\cdot A = \begin{bmatrix}2 & -1 \\ -1 & 2\end{bmatrix}$$
+og
+$$A^T\cdot L = \begin{bmatrix}287 \\ 295\end{bmatrix},$$
+altså dei same matrisene som vi hadde i stad.
+
+Vi har dermed ein standard metode for å finne den verdien av x og y som gir den mest sannsynlege verdien, basert på mange  likningar (som kvar for seg er tilnærma rett).
+
+I Scilab skriv vi `X=(A'*A)^(-1)*A'*L`.
+
+### Residualar
+
+"Residual" kan vi bruke om "rest" eller "det som er att", eller som her: *forskjellen* mellom ein observert verdi og den verdien vi finn ved minste kvadraters metode. 
+
+Det vil vere ein residual for kvar observert verdi, og vi kan dermed setje opp ei matrise $V$ som ha same dimensjon som $X$,  og vi kan  finne alle residualane ved å rekne ut 
+$$V = \begin{bmatrix}V_1 \\ V_2\end{bmatrix} = A\cdot X - L  = \begin{bmatrix}1 & 0 \\ 0 & 1 \\ 1 & -1\end{bmatrix}\cdot\begin{bmatrix}289.67 \\ 292.33\end{bmatrix} - \begin{bmatrix}290\\292\\-3\end{bmatrix} = \begin{bmatrix}-0.33\\0.33\\0.33\end{bmatrix}$$
+(i Scilab `V=A*X-L`). Poenget med minste kvadraters metode er å minimere kvadratsummen av residualane, og det viser det seg at produktet `V^T*V` er akkurat denne kvadratsummen:
+$$\sum V_i^2 = V^T\cdot V = \begin{bmatrix}-0.33 & 0.33 & 0.33\end{bmatrix}\cdot\begin{bmatrix}-0.33\\0.33\\0.33\end{bmatrix} = 0.33$$
+
+### Vektsmatriser
+No kombinerer vi to ting: *vekting* (basert på usikkerhet) og *minste kvadraters metode*. Vi treng då å samle informasjonen om vekting på ein hensiktsmessig måte, slik at vi kan bruke den saman med matrisene i forrige avsnitt. Den mest hensiktsmessige er å lage ei diagonalmatrise med vektene på diagonalen. I Scilab lager vi diagonalmatriser ved kommandoen `diag([vektor])`. La oss vekte dei tre ulike målingane i dømet med *usikkerheten* i kvar måling (den er gjot med to ulike måleapparat):
+$$\sigma_1 = 0.1\;\text{m}\qquad\text{og}\qquad\sigma_2 = 0.2\;\text{m}$$
+og $\sigma_1$ er brukt i dei to målingane i punkt $P1$ og $\sigma_2$ i den eine målinga i punkt $P2$. 
+
+Så vekter vi systemet ved å gi kvar likning si vekt:
+$$\text{Likning 1: } H_{P1} = H_A - H_{P1A} \\ \text{Likning 2: } H_{P2} = H_A - H_{P2A}\\ \text{Likning 3: }H_{P1} -H_{P2} = -H_{12}$$
+No inneheld den første og tredje likninga tal målt med usikkerhet $\sigma_1$, og den andre tal som er målt med usikkerhet $\sigma_2$. Då vil *vektsmatrisa* (som vi kaller $P$) vere
+$$P=\begin{bmatrix}0.1 & 0 & 0\\ 0 & 0.2 & 0 \\ 0 & 0 & 0.1\end{bmatrix}$$
+og vi får den i Scilab ved kommandoen `P = diag([0.1, 0.2, 0.1])`. Vidare kan vi skrive dei tre likningane ved matriseuttrykket
+$$A\cdot X = L$$
+og når vi vekter dei tre likiningane kan vi gjere det ved å multiplisere kvar side av uttrykket med $P$:
+$$P\cdot A\cdot X=P\cdot L \quad\rightarrow\quad X=(A^T\cdot P\cdot A)^{−1}\cdot A^T \cdot P\cdot L = \begin{bmatrix}289.60 \\ 292.20\end{bmatrix}$$
+som i Scilab vert `X=(A'*P*A)^(-1)*A'*P*L`. Vi får også nye residualar:
+$$V = A\cdot X-L = \begin{bmatrix}-0.4\\0.2\\0.4\end{bmatrix}$$
+Kan nokon forklare kvifor dei to høgdene som er målt med minst usikkerhet får størst residualar?
+
+Vi kan då også finne den vekta kvadratsummen av residualane som $V^T\cdot P\cdot V$:
+$$\begin{bmatrix}-0.4 & 0.2 & 0.4\end{bmatrix}\cdot\begin{bmatrix}0.1 & 0 & 0 \\ 0 & 0.2 & 0 \\ 0 & 0 & 0.1\end{bmatrix}\cdot \begin{bmatrix}-0.4\\0.2\\0.4\end{bmatrix} = (-0.4)^2\cdot 0.1 + 0.2^2\cdot 0.2 + 0.4^2\cdot0.1 = 0.04$$
+Kvadratsummen av residualane er *mindre* enn i det uvekta dømet; det er eit godt teikn.
+
+### Usikkerhet i resultatet
+Kor stor er usikkerheten i $H_{P1}$ og $H_{P2}$ (høgdene vi fant i forrige døme)? Vi vil gjerne finne standardavviket for både $H_{P1}$ og $H_{P2}$. Vi gjer dette ved å finne to "hjelpestorleikar" (eit matematisk omgrep som betyr "tal vi skal bruke, men ikkje tar oss bryet med å forklare"). Den første er "root mean square error", *RMSE*, definert ved 
+$$\sigma_0=\sqrt{\frac{V^T\cdot P\cdot V}{df}}$$
+der "$df$" er talet på  "overbestemmelser" (eller "frihetsgrader"). Det betyr  kor mange likningar vi har "for mange", og er også ein konstant som er innført av ulike matematiske grunnar. Vi rekner den i dette tilfellet ut som
+$$df = \text{talet på likningar} - \text{talet på ukjende} = 3-2=1$$
+slik at
+$$\sigma_0=\sqrt{\frac{0.04}{1}} = 0.2$$
+
+Vi treng også *kofaktormatrisa*
+$$Q=(A^T \cdot P\cdot A)^{−1} = \begin{bmatrix}6 & 2 \\ 2 & 4\end{bmatrix}$$
+Så viser det seg at vi kan lage ei matrise som inneheld både varians til kvar variabel, og kovarians mellom variablane:
+$$S=\sigma_0^2\cdot Q = 0.2^2\cdot\begin{bmatrix}6 & 2 \\ 2 & 4\end{bmatrix} = \begin{bmatrix}0.24 & 0.08 \\ 0.08 & 0.16\end{bmatrix}.$$
+Denne matrisa (som her har dimensjonar: $2\times 2$) har varians til ein variabel på hoveddiagonalen, og kovarians mellom to variable på dei andre elementa. Den kalles (fornuftig nok) *varians-kovariansmatrisa*. For å vere presise kan vi frå matrisa lese ut at:
+$$Var(H_{P1}) = 0.24, \quad Var(H_{P2}) = 0.16\quad\text{og}\quad Cov(H_{P1}, H_{P2}) = 0.08$$
+Tar vi kvadratrota av matrisa får vi på hoveddiagonalen standardavvika til dei to høgdene:
+$$\sigma_{P1} = 0.49\qquad \sigma_{P2}= 0.4$$
+(Rota av kovariansen mellom dei to høgdene er ikkje interessant.)

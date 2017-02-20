@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "--- \ntitle: \"Statistikk i landmåling\"\nauthor: \"Aasmund Kvamme\"\ndate: \"`r Sys.Date()`\"\n---\n\n# Bakgrunn\n\nFaget \"landmåling\" handler om å måle avstandar, vinklar og andre ting som har med naturen og landskapet rundt oss. Alle målingar er av naturen belemra med feil, eller *usikkerhet*. Og usikkerhet er best beskrevet ved hjelp av statistikk. \n\n",
+    "created" : 1487610781550.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1839319638",
+    "id" : "D9EE2722",
+    "lastKnownWriteTime" : 1487598250,
+    "last_content_update" : 1487598250,
+    "path" : "C:/Users/akv/Box Sync/enkeltemne/byg102/BYG102bok/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

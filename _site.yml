@@ -1,0 +1,23 @@
+name: "BYG102-bok"
+navbar:
+  title: "BYG102"
+  left:
+    - text: "Oversikt"
+      href: index.html
+    - text: "Definisjonar"
+      href: 01_definisjonar.html
+    - text: "Non stop"
+      href: 02_nonstop.html
+    - text: "Datainnsamling"
+      href: 03_datainnsamling.html
+    - text: "Analyse"
+      href: 04_analyse.html
+    - text: "Normalfordelinga"
+      href: 05_normalfordeling.html
+    - text: "MKM og utjamning"
+      href: 50_utjamning.html
+output:
+  html_document:
+    css: styles.css
+    include:
+      in_header: forsats.html
