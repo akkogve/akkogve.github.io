@@ -21,3 +21,4 @@ output:
     css: styles.css
     include:
       in_header: forsats.html
+output_dir: "."
