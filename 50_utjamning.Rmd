@@ -32,6 +32,24 @@ $$M=\begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix},\quad N = \begin{bmatrix}
 
 Alt etter svara så går eg raskt gjennom kva *matriser* og *vektorar* er.
 
+### Vektorar og matriser
+
+Ei *matrise* er for oss ein måte å organisere tal på. Denne organiseringa er eit "rutenett": vi organiserer tal i *rekker* og *kolonner*:
+$$A = \begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix}$$
+Denne matrisa har to *rekker* og tre *kolonner*. Dersom vi berre har ei rekke eller kolonne kaller vi det ofte ein *vektor*. (*Rekke*vektor eller *kolonne*vektor, alt etter forma.)
+
+I **Scilab**  skriv vi matriser ved å setje *komma* mellom tala i ei rekke, og *semikolon* mellom rekkene:
+
+    A = [1, 2, 3; 4, 5, 6]
+    
+    
+#### Definisjonar og reknemåter
+
+Vi kan *transponere* ei matrise ved å byte om rekker og kolonner. Symbolet er $A^T$, og i *Scilab* skriv vi `A'` (symbolet `'` finn du ofte saman med `*`):
+$$A^T = \begin{bmatrix}1 & 4 \\ 2 & 5 \\ 3 & 6\end{bmatrix}$$
+Matrisa har **dimensjon** $(r\times k)$, der  $r$ er talet på rekker og $k$ er talet på kolonner. Vi kan **addere** eller **subtrahere** to matriser dersom dei har same dimensjon. I så fall skjer det "ledd for ledd":
+$$\begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix} + \begin{bmatrix}5 & 0 & 2 \\ -1 & -2 & 8\end{bmatrix} = \begin{bmatrix}1+5 & 2+0 & 3+2 \\ 4-1 & 5-2 & 6+8\end{bmatrix} = \begin{bmatrix}6 & 2 & 5 \\ 3 & 3 & 14\end{bmatrix}$$
+
 ### Vekting
 
 Å vekte ulike observasjonar opp mot kvarandre er ein veldig nyttig teknikk, der vi kan la nokre observasjonar/verdiar få større eller mindre vekt, alt etter som kor "viktige" dei er. Vi har sett dømer på det i veke 4 (forventing).
@@ -125,8 +143,8 @@ og skriv dei på matriseforma
 $$\begin{bmatrix}1 & 0 \\ 0 & 1 \\ 1 & -1\end{bmatrix}\cdot \begin{bmatrix}H_{P1} \\ H_{P2}\end{bmatrix} = \begin{bmatrix}H_A-H_{P1A} \\ H_A-H_{P2A} \\ -H_{12}\end{bmatrix} = \begin{bmatrix}290 \\ 292 \\ -3\end{bmatrix}$$
 Vi kaller disse for $A$, $X$ og $L$, slik at vi kan skrive $A\cdot X = L$. 
 Vi finn $X$ ved (i Scilab) å rekne ut 
-$$X = (A^T\cdot A)^{-1}\cdot A^T\cdot L$$
-Vi viser ikkje at dette er rett, men merker oss at 
+$$X = (A^T\cdot A)^{-1}\cdot A^T\cdot L = \begin{bmatrix}289.67 \\ 292.33\end{bmatrix}$$
+Bortsett frå at vi *ser* at dette er dei same tala som i stad så *viser* vi ikkje at dette er rett. Men vi merker oss at 
 $$A^T\cdot A = \begin{bmatrix}2 & -1 \\ -1 & 2\end{bmatrix}$$
 og
 $$A^T\cdot L = \begin{bmatrix}287 \\ 295\end{bmatrix},$$
@@ -134,7 +152,9 @@ altså dei same matrisene som vi hadde i stad.
 
 Vi har dermed ein standard metode for å finne den verdien av x og y som gir den mest sannsynlege verdien, basert på mange  likningar (som kvar for seg er tilnærma rett).
 
-I Scilab skriv vi `X=(A'*A)^(-1)*A'*L`.
+I Scilab skriv vi 
+    
+    X=(A'*A)^(-1)*A'*L
 
 ### Residualar
 

@@ -336,6 +336,16 @@ div.tocify {
 <p><strong>4. Kva betyr den <em>transponerte</em> til ei matrise <span class="math inline">\(A\)</span>?</strong> (Fire alternativ)</p>
 <p>Alt etter svara så går eg raskt gjennom kva <em>matriser</em> og <em>vektorar</em> er.</p>
 </div>
+<div id="vektorar-og-matriser" class="section level3">
+<h3>Vektorar og matriser</h3>
+<p>Ei <em>matrise</em> er for oss ein måte å organisere tal på. Denne organiseringa er eit “rutenett”: vi organiserer tal i <em>rekker</em> og <em>kolonner</em>: <span class="math display">\[A = \begin{bmatrix}1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6\end{bmatrix}\]</span> Denne matrisa har to <em>rekker</em> og tre <em>kolonner</em>. Dersom vi berre har ei rekke eller kolonne kaller vi det ofte ein <em>vektor</em>. (<em>Rekke</em>vektor eller <em>kolonne</em>vektor, alt etter forma.)</p>
+<p>I <strong>Scilab</strong> skriv vi matriser ved å setje <em>komma</em> mellom tala i ei rekke, og <em>semikolon</em> mellom rekkene:</p>
+<pre><code>A = [1, 2, 3; 4, 5, 6]</code></pre>
+<div id="definisjonar-og-reknemater" class="section level4">
+<h4>Definisjonar og reknemåter</h4>
+<p>Vi kan <em>transponere</em> ei matrise ved å byte om rekker og kolonner. Symbolet er <span class="math inline">\(A^T\)</span>, og i <em>Scilab</em> skriv vi <code>A'</code> (symbolet <code>'</code> finn du ofte saman med <code>*</code>): <span class="math display">\[A^T = \begin{bmatrix}1 &amp; 4 \\ 2 &amp; 5 \\ 3 &amp; 6\end{bmatrix}\]</span> Matrisa har <strong>dimensjon</strong> <span class="math inline">\((r\times k)\)</span>, der <span class="math inline">\(r\)</span> er talet på rekker og <span class="math inline">\(k\)</span> er talet på kolonner. Vi kan <strong>addere</strong> eller <strong>subtrahere</strong> to matriser dersom dei har same dimensjon. I så fall skjer det “ledd for ledd”: <span class="math display">\[\begin{bmatrix}1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6\end{bmatrix} + \begin{bmatrix}5 &amp; 0 &amp; 2 \\ -1 &amp; -2 &amp; 8\end{bmatrix} = \begin{bmatrix}1+5 &amp; 2+0 &amp; 3+2 \\ 4-1 &amp; 5-2 &amp; 6+8\end{bmatrix} = \begin{bmatrix}6 &amp; 2 &amp; 5 \\ 3 &amp; 3 &amp; 14\end{bmatrix}\]</span></p>
+</div>
+</div>
 <div id="vekting" class="section level3">
 <h3>Vekting</h3>
 <p>Å vekte ulike observasjonar opp mot kvarandre er ein veldig nyttig teknikk, der vi kan la nokre observasjonar/verdiar få større eller mindre vekt, alt etter som kor “viktige” dei er. Vi har sett dømer på det i veke 4 (forventing).</p>
@@ -381,9 +391,10 @@ div.tocify {
 <div id="ved-matriser" class="section level4">
 <h4>Ved matriser</h4>
 <p>Det går an (i kompendiet) å utleie ein annan måte som gir oss eksakt same svar, men med mykje mindre arbeid.</p>
-<p>Først ordner vi likningane, slik at dei ukjende kjem på ei side (og vi tar vekk residualane): <span class="math display">\[H_{P1} =  H_A - H_{P1A} \\ H_{P2} = H_A - H_{P2A}\\ H_{P1} -H_{P2} = -H_{12}\]</span> og skriv dei på matriseforma <span class="math display">\[\begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; -1\end{bmatrix}\cdot \begin{bmatrix}H_{P1} \\ H_{P2}\end{bmatrix} = \begin{bmatrix}H_A-H_{P1A} \\ H_A-H_{P2A} \\ -H_{12}\end{bmatrix} = \begin{bmatrix}290 \\ 292 \\ -3\end{bmatrix}\]</span> Vi kaller disse for <span class="math inline">\(A\)</span>, <span class="math inline">\(X\)</span> og <span class="math inline">\(L\)</span>, slik at vi kan skrive <span class="math inline">\(A\cdot X = L\)</span>. Vi finn <span class="math inline">\(X\)</span> ved (i Scilab) å rekne ut <span class="math display">\[X = (A^T\cdot A)^{-1}\cdot A^T\cdot L\]</span> Vi viser ikkje at dette er rett, men merker oss at <span class="math display">\[A^T\cdot A = \begin{bmatrix}2 &amp; -1 \\ -1 &amp; 2\end{bmatrix}\]</span> og <span class="math display">\[A^T\cdot L = \begin{bmatrix}287 \\ 295\end{bmatrix},\]</span> altså dei same matrisene som vi hadde i stad.</p>
+<p>Først ordner vi likningane, slik at dei ukjende kjem på ei side (og vi tar vekk residualane): <span class="math display">\[H_{P1} =  H_A - H_{P1A} \\ H_{P2} = H_A - H_{P2A}\\ H_{P1} -H_{P2} = -H_{12}\]</span> og skriv dei på matriseforma <span class="math display">\[\begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; -1\end{bmatrix}\cdot \begin{bmatrix}H_{P1} \\ H_{P2}\end{bmatrix} = \begin{bmatrix}H_A-H_{P1A} \\ H_A-H_{P2A} \\ -H_{12}\end{bmatrix} = \begin{bmatrix}290 \\ 292 \\ -3\end{bmatrix}\]</span> Vi kaller disse for <span class="math inline">\(A\)</span>, <span class="math inline">\(X\)</span> og <span class="math inline">\(L\)</span>, slik at vi kan skrive <span class="math inline">\(A\cdot X = L\)</span>. Vi finn <span class="math inline">\(X\)</span> ved (i Scilab) å rekne ut <span class="math display">\[X = (A^T\cdot A)^{-1}\cdot A^T\cdot L = \begin{bmatrix}289.67 \\ 292.33\end{bmatrix}\]</span> Bortsett frå at vi <em>ser</em> at dette er dei same tala som i stad så <em>viser</em> vi ikkje at dette er rett. Men vi merker oss at <span class="math display">\[A^T\cdot A = \begin{bmatrix}2 &amp; -1 \\ -1 &amp; 2\end{bmatrix}\]</span> og <span class="math display">\[A^T\cdot L = \begin{bmatrix}287 \\ 295\end{bmatrix},\]</span> altså dei same matrisene som vi hadde i stad.</p>
 <p>Vi har dermed ein standard metode for å finne den verdien av x og y som gir den mest sannsynlege verdien, basert på mange likningar (som kvar for seg er tilnærma rett).</p>
-<p>I Scilab skriv vi <code>X=(A'*A)^(-1)*A'*L</code>.</p>
+<p>I Scilab skriv vi</p>
+<pre><code>X=(A&#39;*A)^(-1)*A&#39;*L</code></pre>
 </div>
 </div>
 <div id="residualar" class="section level3">
