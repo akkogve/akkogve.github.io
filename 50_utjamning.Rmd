@@ -49,6 +49,11 @@ Vi kan *transponere* ei matrise ved å byte om rekker og kolonner. Symbolet er $
 $$A^T = \begin{bmatrix}1 & 4 \\ 2 & 5 \\ 3 & 6\end{bmatrix}$$
 Matrisa har **dimensjon** $(r\times k)$, der  $r$ er talet på rekker og $k$ er talet på kolonner. Vi kan **addere** eller **subtrahere** to matriser dersom dei har same dimensjon. I så fall skjer det "ledd for ledd":
 $$\begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix} + \begin{bmatrix}5 & 0 & 2 \\ -1 & -2 & 8\end{bmatrix} = \begin{bmatrix}1+5 & 2+0 & 3+2 \\ 4-1 & 5-2 & 6+8\end{bmatrix} = \begin{bmatrix}6 & 2 & 5 \\ 3 & 3 & 14\end{bmatrix}$$
+Å **multiplisere** to matriser ikkje så enkelt. Då må dimensjonane passe overens på denne måten:
+
+*Talet på kolonner i den første må vere lik talet på rekker i den andre.*
+
+Det betyr at dersom $A=(m\times n)$ og $B=(n\times p)$ så kan vi multiplisere $A\cdot B$, men ikkje $B\cdot A$.
 
 ### Vekting
 
