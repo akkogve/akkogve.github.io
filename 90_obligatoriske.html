@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Innleiing</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Patua+One|Slabo+27px" rel="stylesheet">
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">BYG102</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Oversikt</a>
+</li>
+<li>
+  <a href="01_definisjonar.html">Definisjonar</a>
+</li>
+<li>
+  <a href="02_nonstop.html">Non stop</a>
+</li>
+<li>
+  <a href="03_datainnsamling.html">Datainnsamling</a>
+</li>
+<li>
+  <a href="04_analyse.html">Analyse</a>
+</li>
+<li>
+  <a href="20_normalfordeling.html">Normalfordelinga</a>
+</li>
+<li>
+  <a href="30_testing.html">Testing</a>
+</li>
+<li>
+  <a href="50_utjamning.html">MKM og utjamning</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Innleiing</h1>
+
+</div>
+
+
+<div id="frste-obligatoriske" class="section level1">
+<h1>Første obligatoriske</h1>
+<p>Her er ei oppsummering av resultata av den første obligatoriske. Altså eit lite forsøk på “læringsanalyse”.</p>
+<div id="bakgrunn" class="section level2">
+<h2>Bakgrunn</h2>
+<p>Denne obligatoriske var eit reint “spark bak” for å få studentane til å arbeide med “sannsynlighetsdelen” av faget. Den vart gjennomført ved hjelp av WeBWorK.</p>
+<p>Det var 11 spørsmål. På alle spørsmåla kunne dei svare så mange ganger dei ville, og dei fekk umiddelbar respons på om det var rett eller galt.</p>
+</div>
+<div id="radata" class="section level2">
+<h2>Rådata</h2>
+<p>Ved utløp av fristen hadde 158 av 181 svart. Av disse var det 6 som hadde svart så dårleg at det ikkje vart godkjent. Tilsaman fekk altså 152 godkjent, noko som utgjer 83.9779006 %.</p>
+<p>Dei 6 som ikkje fekk godkjent og dei 23 som ikkje hadde svart får utsett frist i tre dagar.</p>
+</div>
+<div id="analyse-av-enkeltsprsmal" class="section level2">
+<h2>Analyse av enkeltspørsmål</h2>
+<p>Av dei 152 som svarte fordelte poeng per oppgåve (av 100 moglege) seg slik:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">86</td>
+<td align="center">86</td>
+<td align="center">85</td>
+<td align="center">86</td>
+<td align="center">87</td>
+<td align="center">86</td>
+<td align="center">86</td>
+<td align="center">83</td>
+<td align="center">86</td>
+<td align="center">81</td>
+<td align="center">78</td>
+</tr>
+</tbody>
+</table>
+<p>Altså ingen store forskjeller; oppgåve 10 og 11 skal eg kome tilbake til.</p>
+<p>Tal på forsøk ein student brukte før h*n fekk rett svar fordelte seg slik:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">7</td>
+<td align="center">6</td>
+</tr>
+</tbody>
+</table>
+<p>Det er fire spørsmål som utmerker seg her: 5, 8, 10 og 11.</p>
+<div id="oppgave-5" class="section level3">
+<h3>Oppgåve 5</h3>
+<blockquote>
+<p>Varelageret ditt kjem frå tre ulike fabrikkar: 50% frå fabrikk A1, 30% frå fabrikk A2 og 20% frå fabrikk A3. Du veit at dei tre fabrikkane har ulik feilrate: A1 produserer 5 prosent feil, A2 produserer 7 prosent feil og A3 produserer 8 prosent feil.</p>
+<p>Du plukker ein tilfeldig vare frå lageret og ser at den har ein feil. Kva fabrikk er det mest sannsynleg at den kom frå?</p>
+<ul>
+<li>Fabrikk A1</li>
+<li>Fabrikk A2</li>
+<li>Fabrikk A3</li>
+</ul>
+</blockquote>
+<p>Dette var den einaste oppgåva der studenten ikkje skulle skrive eit talsvar, men velge eitt svar frå ei liste. Det kan vere forklaringa på at alle klarte denne på første forsøk.</p>
+</div>
+<div id="oppgave-8" class="section level3">
+<h3>Oppgåve 8</h3>
+<blockquote>
+<p>Eit telefonselskap leverer eit “familieabonnement” med opp til sju deltakarar som kan snakke gratis saman. La X vere antal medlemmer i ein tilfeldig valgt familie som har eit slikt abonnement. Fordelinga til X er gitt i tabellen nedanfor.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Finn forventinga E(X)</li>
+<li>Finn variansen Var(X)</li>
+</ol>
+<p>Vi veit at det er meir enn 3 medlemmer i ein familie.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Kva er sannsynligheten for at det er færre enn 6 medlemmer (gitt at det er meir enn 3)?</li>
+</ol>
+</blockquote>
+<p>Spørsmål b) var ikkje gjennomgått i førelesing, så her måtte dei finne formlane på eiga hand. Etter dei muntlege tilbakemeldingane i rekneøvinga gjekk dette relativt greitt.</p>
+<p>Spørsmål c) var gjennomgått i førelesing, men det var mange som var usikre på framgangsmåten.</p>
+</div>
+<div id="oppgave-10" class="section level3">
+<h3>Oppgåve 10</h3>
+<p>Dette var ei oppgåve der dei skulle rekne punktsannsynligheter i tre ulike fordelingar (binomisk, geometrisk og Poisson). Poisson-fordeling var ikkje gjennomgått i timen, så det kan vere forklaringa på at dei trengte mange forsøk. <em>[NB! Eg kunne kanskje lært meir av svara dersom eg hadde delt denne oppgåva opp i tre mindre oppgåver; ei for kvar fordeling.]</em></p>
+</div>
+<div id="oppgave-11" class="section level3">
+<h3>Oppgåve 11</h3>
+<p>Dette var ei oppgåve der dei skulle rekne fire ulike sannsynligheter i normalfordeling ved å bruke fordelingsfunksjonen. Denne funksjonen (skrevet i Scilab) var levert ut på førehand. Det var ingen kommentarar undervegs på at ting var uklart, men det var nokre som prøvde å bruke tabell frå læreboka. Og då vart det feil med avrunding for enkelte uheldige (dette vart retta opp i slik at dei kunne svare med den avrundinga tabellen gir).</p>
+</div>
+</div>
+<div id="r-kommandoar" class="section level2">
+<h2>R-kommandoar</h2>
+<p>Eg brukte ein del tid på å ta ein skjermdump frå WeBWorK, og så formattere denne pent slik at kvar student sine data havna på <em>ei</em> linje. Då kunne eg importere denne inn i R.</p>
+<div id="import" class="section level3">
+<h3>Import</h3>
+<p>Eg brukte snarvegen “Import Dataset” som eg finn under “Environment”. Når data er rydda på førehand kan denne hente inn data frå eit Excel-ark. Eg fikk også vite R-.kommandoen:</p>
+<pre class="r"><code>library(readxl)
+fristen &lt;- read_excel(&quot;C:/Users/akv/Box Sync/enkeltemne/byg102/v2017/obligatoriske/obligatorisk 1/fristen.xlsx&quot;)</code></pre>
+<p>Eg endte opp med variabelen <code>fristen</code> som inneheld 26 kolonner (Namn, E-postadresse, Poeng oppnådd, Poeng oppnåeleg, Poeng på kvart spørsmål, Tal forsøk på kvart spørsmål).</p>
+<p>Eg henta så ut kvar enkelt kolonne ved</p>
+<pre class="r"><code>    namn &lt;- fristen[1]
+    poeng &lt;- fristen[3]
+    f1 &lt;- fristen[16]</code></pre>
+<p>og så vidare.</p>
+</div>
+<div id="analyse" class="section level3">
+<h3>Analyse</h3>
+<p>Eg kan då hente ut namna på dei som ikkje fekk nok poeng (definert som mindre enn 8):</p>
+<pre class="r"><code>stryk &lt;- namn[poeng&lt;8,]</code></pre>
+<p>Det var altså 30 studentar. [Ein mindre enn når eg gjoprde det for hand. Kva har skjedd?]</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>Testing</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
@@ -163,6 +166,107 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -213,23 +317,25 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Testing</h1>
 
 </div>
 
 
-<div id="byg102-statistikk-og-landmaling" class="section level2">
-<h2>BYG102 – Statistikk og landmåling</h2>
-<p>På disse sidene vil eg samle stoff som eg skriv medan eg underviser i faget <strong>BYG102</strong>. Med tida vert det kanskje eit komplett <em>kompendium</em> som kan fungere som ei lærebok, men inntil vidare er det berre notat til eige bruk.</p>
-<p>Fordelen med å bruke GitHub:</p>
-<ul>
-<li>Eg kan lett lenke til stoff som ligg på disse sidene,</li>
-<li>Eg kan skrive i <a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a> i <a href="https://www.rstudio.com/">RStudio</a></li>
-<li>Eg kan skrive i <a href="https://www.latex-project.org/">LaTeX</a>: <span class="math inline">\(\sin^2(x) + \cos^2(x) = \int_0^1 2 dx\)</span>. Ja, ja. Om ikkje det vises her, så vises det i alle fall når eg berre får lenka opp til MathJax …</li>
-</ul>
+<div id="oversikt-over-kapittelet" class="section level2">
+<h2>Oversikt over kapittelet</h2>
+<p>I dette kapittelet skal vi sjå på korleis vi kan undersøke om ein påstand kan vere “til å stole på” eller ikkje.</p>
+<p><strong>Døme:</strong> Det er eit krav om at usikkerheten i eit måleapparat ikkje skal vere større enn <span class="math inline">\(0.005\)</span> meter. Etter å ha gjennomført 8 målingar med apparatet sit vi med eit estimert standardavvik på <span class="math inline">\(S=0.006\)</span> m. <em>Er apparatet dermed eit dårleg apparat?</em> eller kan det tenkast at vi berre var “uheldige” med målingane?</p>
+<div id="hypoteser" class="section level3">
+<h3>Hypoteser</h3>
+<p>Ei påstand som den over vil vi kalle ein <em>hypotese</em>. Vi formulerer den som ein påstand om den <em>antatte</em> usikkerheten <span class="math inline">\(\sigma\)</span> (i apparatet) i høve til den <em>påkrevde</em> usikkerheten <span class="math inline">\(\sigma_0\)</span>. No er det jo alltid ein “motpåstand” om at “alt er greitt”. Den kaller vi <span class="math inline">\(H_0\)</span>, og les den som “H null” (tenk “null konsekvens”): <span class="math display">\[H_0:\;\sigma\leq\sigma_0\]</span> Den alternative påstanden, om at “noko er galt” kaller vi <span class="math inline">\(H_1\)</span>, og les “H ein” eller “alternativhypotesen”: <span class="math display">\[H_1:\;\sigma &gt; \sigma_0\]</span> Vår oppgåve vert å sei om vi kan stole på <span class="math inline">\(H_0\)</span>, eller om vi er nøydde til å forkaste <span class="math inline">\(H_0\)</span>.</p>
+</div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

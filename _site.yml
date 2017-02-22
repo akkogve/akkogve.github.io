@@ -13,7 +13,9 @@ navbar:
     - text: "Analyse"
       href: 04_analyse.html
     - text: "Normalfordelinga"
-      href: 05_normalfordeling.html
+      href: 20_normalfordeling.html
+    - text: "Testing"
+      href: 30_testing.html
     - text: "MKM og utjamning"
       href: 50_utjamning.html
 output:

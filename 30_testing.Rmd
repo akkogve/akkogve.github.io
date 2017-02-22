@@ -1,0 +1,23 @@
+---
+title: "Testing"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+---
+
+## Oversikt over kapittelet
+
+I dette kapittelet skal vi sjå på korleis vi kan undersøke om ein påstand kan vere "til å stole på" eller ikkje.
+
+**Døme:** Det er eit krav om at usikkerheten i eit måleapparat ikkje skal vere større enn $0.005$ meter. Etter å ha gjennomført 8 målingar med apparatet sit vi med eit estimert standardavvik på $S=0.006$ m. *Er apparatet dermed eit dårleg apparat?* eller kan det tenkast at vi berre var "uheldige" med målingane?
+
+### Hypoteser
+
+Ei påstand som den over vil vi kalle ein *hypotese*. Vi formulerer den som ein påstand om den *antatte*  usikkerheten $\sigma$  (i apparatet) i høve til den *påkrevde* usikkerheten $\sigma_0$.
+No er det jo alltid ein "motpåstand" om at "alt er greitt". Den kaller vi $H_0$, og les den som "H null" (tenk "null konsekvens"):
+$$H_0:\;\sigma\leq\sigma_0$$
+Den alternative påstanden, om at "noko er galt" kaller vi $H_1$, og les "H ein" eller "alternativhypotesen":
+$$H_1:\;\sigma > \sigma_0$$
+Vår oppgåve vert å sei om vi kan stole på $H_0$, eller om vi er nøydde til å forkaste $H_0$. 
