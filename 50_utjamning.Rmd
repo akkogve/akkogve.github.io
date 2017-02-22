@@ -53,7 +53,22 @@ $$\begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix} + \begin{bmatrix}5 & 0 & 2 
 
 *Talet på kolonner i den første må vere lik talet på rekker i den andre.*
 
-Det betyr at dersom $A=(m\times n)$ og $B=(n\times p)$ så kan vi multiplisere $A\cdot B$, men ikkje $B\cdot A$.
+Det betyr at dersom $A=(m\times n)$ og $B=(n\times p)$ så kan vi multiplisere $A\cdot B$, men ikkje $B\cdot A$. Vi vil stort sett alltid la Scilab ta seg av alle utrekningar, men det kan vere greitt å vite korleis multiplikasjon fungerer "i praksis". 
+
+La $A = \begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix}$ og $B=\begin{bmatrix}5 & 6 & 7 \\ 8 & 9 & 0\end{bmatrix}$. Då vert
+$$A\cdot B = \begin{bmatrix}1\cdot 5 + 2\cdot 8 & 1\cdot 6 + 2\cdot 9 & 1\cdot 7 + 2\cdot 0 \\ 3\cdot 5 + 4\cdot 8 & 3\cdot 6 + 4\cdot 9 & 3\cdot 7 + 4\cdot 0\end{bmatrix} = \begin{bmatrix}21 & 24 & 14 \\ 47 & 72 & 21\end{bmatrix}$$
+Som vi ser så vert alle ledd i ei *rekke* multiplisert saman med tilsvarande ledd i ei *kolonne*, og så vert produkta lagt saman. Dersom du snur om på $A$ og $B$ vil det ikkje lengre vere mogleg å matche ei rekke i $B$ med ei kolonne i $A$ (det er ikkje like mange tal), så denne multiplikasjonen er umogleg.
+
+Vi kan utvide dette til ein generell regel: $A\cdot B\neq B\cdot A$ (også i dei tilfella der det er mogleg å byte om). Prøv regelen med dei to matrisene
+$$A=\begin{bmatrix}1 & 2 \\3 & 4\end{bmatrix}\qquad\text{og}\qquad B=\begin{bmatrix}5 & 6 \\ 7 & 8\end{bmatrix}$$
+Det finst imidlertid ei bestemt matrise som kan byte plass med andre: $I=\begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix}$. Vi kaller denne *identitetsmatrisa*, og den har mange viktige (teoretiske) eigenskaper. Ein vi skal bruke mykje er at det til mange *kvadratiske* matriser (matriser med dimensjon $(r\times r)$) finst ei *invers* matrise slik at 
+$$A\cdot A^{-1} = I$$
+Det er eitt krav til at ei (kvadratisk) matrise skal ha ein invers, og det er at *determinanten* til matrisa er ulik 0.
+
+I Scilab finn du determinanten ved `det(A)` og den inverse ved `A^(-1)` eller `inv(A)`.
+
+
+
 
 ### Vekting
 
