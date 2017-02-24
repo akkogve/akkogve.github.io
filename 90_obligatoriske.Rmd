@@ -86,7 +86,7 @@ Eg brukte ein del tid på å ta ein skjermdump frå WeBWorK, og så formattere d
 Eg brukte snarvegen "Import Dataset" som eg finn under "Environment". Når data er rydda på førehand kan denne hente inn data frå eit Excel-ark. Eg fikk også vite R-.kommandoen:
 ```{r, echo=TRUE}
 library(readxl)
-fristen <- read_excel("C:/Users/akv/Box Sync/enkeltemne/byg102/v2017/obligatoriske/obligatorisk 1/fristen.xlsx")
+fristen <- read_excel("fristen.xlsx")
 ```
 
 Eg endte opp med variabelen `fristen` som inneheld 26 kolonner (Namn, E-postadresse, Poeng oppnådd, Poeng oppnåeleg, Poeng på kvart spørsmål, Tal forsøk på kvart spørsmål).

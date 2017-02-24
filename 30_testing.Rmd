@@ -20,4 +20,10 @@ No er det jo alltid ein "motpåstand" om at "alt er greitt". Den kaller vi $H_0$
 $$H_0:\;\sigma\leq\sigma_0$$
 Den alternative påstanden, om at "noko er galt" kaller vi $H_1$, og les "H ein" eller "alternativhypotesen":
 $$H_1:\;\sigma > \sigma_0$$
-Vår oppgåve vert å sei om vi kan stole på $H_0$, eller om vi er nøydde til å forkaste $H_0$. 
+Vår oppgåve vert å sei om vi kan stole på $H_0$, eller om vi er nøydde til å forkaste $H_0$.
+
+Legg forresten merke til språkbruken her: eg seier ikkje at vi godtar $H_1$, eg seier at vi forkaster $H_0$. Det er ein subtil forskjell på disse.
+
+## Hypoteser generelt
+
+Vi starter med eit konkret døme. Du skal kontrollere om ein vinkel mellom tre hjørner på ein tomt er innanfor
